@@ -10,10 +10,7 @@ int main() {
         400, 300,
         SDL_WINDOW_SHOWN
     );
-
-    SDL_Delay(2000);
-
-    SDL_DestroyWindow(window);
+    SDL_Delay(10000);
     SDL_Quit();
     return 0;
 }
