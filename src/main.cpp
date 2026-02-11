@@ -8,28 +8,21 @@ bool init();
 void kill();
 bool loadBMP(const char* filePath);
 
-// Pointers to window and surface
+// Pointers to window, texture and renderer
 SDL_Window* window;
-SDL_Surface* surface;
-SDL_Surface* image;
+SDL_Renderer* renderer;
+SDL_Texture* texture;
 
 int main() {
     if(!init()) return 0;
     if(!loadBMP("image.bmp")) return 0;
 
-    SDL_BlitSurface( image, NULL, surface, NULL );
-    SDL_UpdateWindowSurface(window);
+    // Render the texture (GPU rendering)
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
 
-
-    // // Draw a rectangle and update window surface
-    // SDL_FillRect(surface, NULL,SDL_MapRGB(surface->format, 255, 90, 120));
-    // SDL_UpdateWindowSurface(window);
-    // SDL_Delay(5000);
-
-    // // Draw a rectangle and update window surface again after 5 seconds
-    // SDL_FillRect(surface, NULL,SDL_MapRGB(surface->format, 200, 200, 200));
-    // SDL_UpdateWindowSurface(window);
-    // SDL_Delay(5000);
+    SDL_RenderCopy(renderer, texture, NULL, NULL);
+    SDL_RenderPresent(renderer);
 
     SDL_Delay(10000);
 
@@ -38,7 +31,7 @@ int main() {
 }
 
 bool init(){
-    // Initialize SDL2 and draw a window
+    // Initialize SDL2 and window
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
         std::cout << "SDL Init Failed: " << SDL_GetError() << std::endl;
         return false;
@@ -58,31 +51,32 @@ bool init(){
         return false;
     }
 
-    // Initialize a surface for software rendering
-    surface = SDL_GetWindowSurface( window );
-    if (!surface)
-    {
-        std::cout << "" << "Failed to initialize surface" << SDL_GetError() << std::endl;
+    // Initialize renderer
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+    if(!renderer){
+        std::cout << "" << "Failed to initialize renderer" << SDL_GetError() << std::endl;
         return false;
     }
-
     return true;
 }
 
 void kill(){
-    SDL_FreeSurface(image);
     // Destroy the window
     SDL_DestroyWindow( window );
 
+    SDL_DestroyTexture(texture);
+    SDL_DestroyRenderer(renderer);
+
     // Clear the memory and quit program
+    texture = NULL;
+    renderer = NULL;
     window = NULL;
-    surface = NULL;
-    image = NULL;
 
     SDL_Quit();
 }
 
 bool loadBMP(const char* filePath){
+    // Load the image to temporary variable
     SDL_Surface *temp;
     temp = SDL_LoadBMP(filePath);
 
@@ -91,7 +85,11 @@ bool loadBMP(const char* filePath){
         return false;
     }
 
-    image = SDL_ConvertSurface( temp, surface->format, 0 );
+    // Create a texture from the temporary variable
+    texture = SDL_CreateTextureFromSurface( renderer, temp );
+
+    // Cleanup and return
     SDL_FreeSurface(temp);
+    temp = NULL;
     return true;
 }
