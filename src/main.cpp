@@ -40,22 +40,16 @@ bool init(){
         SDL_WINDOW_SHOWN
     );
 
-    if (!window)
-    {
-        std::cout << "" << "Failed to create window" << SDL_GetError();
-        system("exit");
-        return false;
-    }
-
     // Initialize a surface for software rendering
     surface = SDL_GetWindowSurface( window );
-
-    if (!surface)
+    if (!surface || !window)
     {
-        std::cout << "" << "Failed to create window" << SDL_GetError();
+        std::cout << "" << "Failed to initialize SDL2" << SDL_GetError();
         system("exit");
         return false;
     }
+
+    return true;
 }
 
 void kill(){
