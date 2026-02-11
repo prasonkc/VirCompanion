@@ -266,4 +266,95 @@ CMakeFiles/Main.dir/src/main.cpp.o: \
  /usr/include/SDL2/SDL_render.h /usr/include/SDL2/SDL_shape.h \
  /usr/include/SDL2/SDL_system.h /usr/include/SDL2/SDL_timer.h \
  /usr/include/SDL2/SDL_version.h /usr/include/SDL2/SDL_locale.h \
- /usr/include/SDL2/SDL_misc.h
+ /usr/include/SDL2/SDL_misc.h /usr/include/c++/15.2.0/iostream \
+ /usr/include/c++/15.2.0/ostream /usr/include/c++/15.2.0/bits/ostream.h \
+ /usr/include/c++/15.2.0/ios /usr/include/c++/15.2.0/iosfwd \
+ /usr/include/c++/15.2.0/bits/stringfwd.h \
+ /usr/include/c++/15.2.0/bits/memoryfwd.h \
+ /usr/include/c++/15.2.0/bits/postypes.h /usr/include/c++/15.2.0/cwchar \
+ /usr/include/c++/15.2.0/exception \
+ /usr/include/c++/15.2.0/bits/exception_ptr.h \
+ /usr/include/c++/15.2.0/bits/cxxabi_init_exception.h \
+ /usr/include/c++/15.2.0/typeinfo \
+ /usr/include/c++/15.2.0/bits/hash_bytes.h \
+ /usr/include/c++/15.2.0/bits/nested_exception.h \
+ /usr/include/c++/15.2.0/bits/char_traits.h \
+ /usr/include/c++/15.2.0/bits/localefwd.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/c++locale.h \
+ /usr/include/c++/15.2.0/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h \
+ /usr/include/c++/15.2.0/cctype /usr/include/c++/15.2.0/bits/ios_base.h \
+ /usr/include/c++/15.2.0/ext/atomicity.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/gthr.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/gthr-default.h \
+ /usr/lib/gcc/x86_64-unknown-linux-gnu/15.2.0/include-fixed/pthread.h \
+ /usr/include/sched.h /usr/include/x86_64-linux-gnu/bits/sched.h \
+ /usr/include/linux/sched/types.h /usr/include/linux/types.h \
+ /usr/include/x86_64-linux-gnu/asm/types.h \
+ /usr/include/asm-generic/types.h /usr/include/asm-generic/int-ll64.h \
+ /usr/include/x86_64-linux-gnu/asm/bitsperlong.h \
+ /usr/include/asm-generic/bitsperlong.h /usr/include/linux/posix_types.h \
+ /usr/include/linux/stddef.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types.h \
+ /usr/include/x86_64-linux-gnu/asm/posix_types_64.h \
+ /usr/include/asm-generic/posix_types.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_sched_param.h \
+ /usr/include/x86_64-linux-gnu/bits/cpu-set.h /usr/include/time.h \
+ /usr/include/x86_64-linux-gnu/bits/time.h \
+ /usr/include/x86_64-linux-gnu/bits/timex.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_itimerspec.h \
+ /usr/include/x86_64-linux-gnu/bits/setjmp.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/atomic_word.h \
+ /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+ /usr/include/c++/15.2.0/bits/locale_classes.h \
+ /usr/include/c++/15.2.0/string /usr/include/c++/15.2.0/bits/allocator.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/c++allocator.h \
+ /usr/include/c++/15.2.0/bits/new_allocator.h \
+ /usr/include/c++/15.2.0/bits/ostream_insert.h \
+ /usr/include/c++/15.2.0/bits/cxxabi_forced.h \
+ /usr/include/c++/15.2.0/bits/stl_function.h \
+ /usr/include/c++/15.2.0/backward/binders.h \
+ /usr/include/c++/15.2.0/bits/refwrap.h \
+ /usr/include/c++/15.2.0/bits/invoke.h \
+ /usr/include/c++/15.2.0/bits/range_access.h \
+ /usr/include/c++/15.2.0/initializer_list \
+ /usr/include/c++/15.2.0/bits/basic_string.h \
+ /usr/include/c++/15.2.0/ext/alloc_traits.h \
+ /usr/include/c++/15.2.0/bits/alloc_traits.h \
+ /usr/include/c++/15.2.0/string_view \
+ /usr/include/c++/15.2.0/bits/functional_hash.h \
+ /usr/include/c++/15.2.0/bits/ranges_base.h \
+ /usr/include/c++/15.2.0/bits/max_size_type.h \
+ /usr/include/c++/15.2.0/numbers \
+ /usr/include/c++/15.2.0/bits/string_view.tcc \
+ /usr/include/c++/15.2.0/ext/string_conversions.h \
+ /usr/include/c++/15.2.0/cstdio /usr/include/c++/15.2.0/cerrno \
+ /usr/include/errno.h /usr/include/x86_64-linux-gnu/bits/errno.h \
+ /usr/include/linux/errno.h /usr/include/x86_64-linux-gnu/asm/errno.h \
+ /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
+ /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
+ /usr/include/c++/15.2.0/bits/charconv.h \
+ /usr/include/c++/15.2.0/bits/basic_string.tcc \
+ /usr/include/c++/15.2.0/bits/memory_resource.h \
+ /usr/include/c++/15.2.0/cstddef \
+ /usr/include/c++/15.2.0/bits/uses_allocator.h \
+ /usr/include/c++/15.2.0/bits/uses_allocator_args.h \
+ /usr/include/c++/15.2.0/tuple /usr/include/c++/15.2.0/bits/ranges_util.h \
+ /usr/include/c++/15.2.0/bits/locale_classes.tcc \
+ /usr/include/c++/15.2.0/system_error \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/error_constants.h \
+ /usr/include/c++/15.2.0/stdexcept /usr/include/c++/15.2.0/streambuf \
+ /usr/include/c++/15.2.0/bits/streambuf.tcc \
+ /usr/include/c++/15.2.0/bits/basic_ios.h \
+ /usr/include/c++/15.2.0/bits/locale_facets.h \
+ /usr/include/c++/15.2.0/cwctype /usr/include/wctype.h \
+ /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/ctype_base.h \
+ /usr/include/c++/15.2.0/bits/streambuf_iterator.h \
+ /usr/include/c++/15.2.0/x86_64-unknown-linux-gnu/bits/ctype_inline.h \
+ /usr/include/c++/15.2.0/bits/locale_facets.tcc \
+ /usr/include/c++/15.2.0/bits/basic_ios.tcc \
+ /usr/include/c++/15.2.0/bits/ostream.tcc /usr/include/c++/15.2.0/istream \
+ /usr/include/c++/15.2.0/bits/istream.tcc
