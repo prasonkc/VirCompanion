@@ -36,6 +36,7 @@ int main() {
 
     return 0;
 }
+//test
 
 bool init(){
     // Initialize SDL2 and window
