@@ -7,11 +7,15 @@ const int windowWidth = 400;
 bool init();
 void kill();
 bool loadBMP(const char* filePath);
+bool loop();
 
 // Pointers to window, texture and renderer
 SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Texture* texture;
+
+// Toogle window borders
+bool isBorderless = true;
 
 int main() {
     if(!init()) return 0;
@@ -24,9 +28,12 @@ int main() {
     SDL_RenderCopy(renderer, texture, NULL, NULL);
     SDL_RenderPresent(renderer);
 
-    SDL_Delay(10000);
+    while ( loop() ) {
+		// wait before processing the next frame
+		SDL_Delay(10);
+	}
 
-    kill();
+
     return 0;
 }
 
@@ -42,7 +49,7 @@ bool init(){
         SDL_WINDOWPOS_CENTERED,
         SDL_WINDOWPOS_CENTERED,
         windowWidth, windowHeight,
-        SDL_WINDOW_SHOWN
+        SDL_WINDOW_SHOWN | SDL_WINDOW_BORDERLESS
     );
 
     if (!window)
@@ -76,6 +83,7 @@ void kill(){
 }
 
 bool loadBMP(const char* filePath){
+
     // Load the image to temporary variable
     SDL_Surface *temp;
     temp = SDL_LoadBMP(filePath);
@@ -91,5 +99,26 @@ bool loadBMP(const char* filePath){
     // Cleanup and return
     SDL_FreeSurface(temp);
     temp = NULL;
+    return true;
+}
+
+bool loop(){
+    SDL_Event e;
+
+    while( SDL_PollEvent( &e ) != 0 ) {
+		switch (e.type) {
+			case SDL_QUIT:
+				return false;
+                break;
+
+			case SDL_MOUSEBUTTONDOWN:
+            // Toggle the broder on right click
+				if(e.button.button == SDL_BUTTON_RIGHT){
+                    isBorderless = !isBorderless;
+                    SDL_SetWindowBordered(window, isBorderless ? SDL_FALSE : SDL_TRUE);
+                }
+				break;
+		}
+	}
     return true;
 }

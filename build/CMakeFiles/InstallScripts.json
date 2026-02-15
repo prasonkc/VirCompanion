@@ -1,7 +1,7 @@
 {
 	"InstallScripts" : 
 	[
-		"/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/cmake_install.cmake"
+		"/mnt/data/Backup/Projects/VPet/build/cmake_install.cmake"
 	],
 	"Parallel" : false
 }

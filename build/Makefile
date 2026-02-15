@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet
+CMAKE_SOURCE_DIR = /mnt/data/Backup/Projects/VPet
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build
+CMAKE_BINARY_DIR = /mnt/data/Backup/Projects/VPet/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/CMakeFiles /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/data/Backup/Projects/VPet/build/CMakeFiles /mnt/data/Backup/Projects/VPet/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/data/Backup/Projects/VPet/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

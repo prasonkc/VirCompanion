@@ -1,4 +1,4 @@
-# Install script for directory: /media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet
+# Install script for directory: /mnt/data/Backup/Projects/VPet
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,7 +45,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/install_local_manifest.txt"
+  file(WRITE "/mnt/data/Backup/Projects/VPet/build/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -61,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/mnt/data/Backup/Projects/VPet/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -1,3 +1,3 @@
-/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/CMakeFiles/Main.dir
-/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/CMakeFiles/edit_cache.dir
-/media/null/add47ab3-b11f-4609-944b-1829b430374b/Backup/Projects/VPet/build/CMakeFiles/rebuild_cache.dir
+/mnt/data/Backup/Projects/VPet/build/CMakeFiles/Main.dir
+/mnt/data/Backup/Projects/VPet/build/CMakeFiles/edit_cache.dir
+/mnt/data/Backup/Projects/VPet/build/CMakeFiles/rebuild_cache.dir

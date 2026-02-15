@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Main.dir/link.d CMakeFiles/Main.dir/src/main.cpp.o -o Main  /usr/lib/x86_64-linux-gnu/libSDL2-2.0.so.0.3200.62
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Main.dir/link.d CMakeFiles/Main.dir/src/main.cpp.o -o Main  /usr/lib/libSDL2-2.0.so.0.3200.64
