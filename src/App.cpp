@@ -69,7 +69,9 @@ void App::render(){
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    SDL_RenderCopy(renderer, texture, nullptr, nullptr);
+    SDL_Rect src = idleAnim.getSourceRect();
+    SDL_RenderCopy(renderer, texture, &src, nullptr);
+    
     SDL_RenderPresent(renderer);
 }
 
@@ -78,6 +80,7 @@ void App::run(){
         handleEvents();
         render();
         SDL_Delay(10);
+        idleAnim.update();
     }
 }
 

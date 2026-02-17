@@ -2,6 +2,8 @@
 #define APP_H
 
 #include <SDL2/SDL.h>
+#include "Animation.h"
+
 
 class App{
     public:
@@ -27,6 +29,8 @@ class App{
         //Window ratios
         int windowHeight = 400;
         int windowWidth = 400;
+
+        Animation idleAnim{32, 32, 4, 1900};
 
 };
 

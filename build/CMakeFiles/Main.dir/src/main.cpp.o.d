@@ -319,4 +319,6 @@ CMakeFiles/Main.dir/src/main.cpp.o: \
  /usr/include/c++/15.2.1/bits/basic_ios.tcc \
  /usr/include/c++/15.2.1/bits/ostream.tcc /usr/include/c++/15.2.1/istream \
  /usr/include/c++/15.2.1/bits/istream.tcc \
- /mnt/data/Backup/Projects/VPet/src/App.h
+ /mnt/data/Backup/Projects/VPet/src/App.h \
+ /mnt/data/Backup/Projects/VPet/src/Animation.h \
+ /usr/include/c++/15.2.1/cstdint

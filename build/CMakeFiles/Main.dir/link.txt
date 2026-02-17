@@ -1,1 +1,1 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Main.dir/link.d CMakeFiles/Main.dir/src/main.cpp.o CMakeFiles/Main.dir/src/App.cpp.o -o Main   -L/mnt/data/Backup/Projects/VPet/src  -Wl,-rpath,/mnt/data/Backup/Projects/VPet/src /usr/lib/libSDL2-2.0.so.0.3200.64
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/Main.dir/link.d CMakeFiles/Main.dir/src/main.cpp.o CMakeFiles/Main.dir/src/App.cpp.o CMakeFiles/Main.dir/src/Animation.cpp.o -o Main   -L/mnt/data/Backup/Projects/VPet/src  -Wl,-rpath,/mnt/data/Backup/Projects/VPet/src /usr/lib/libSDL2-2.0.so.0.3200.64

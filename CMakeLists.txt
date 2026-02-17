@@ -8,6 +8,7 @@ find_package(SDL2 REQUIRED)
 add_executable(Main 
     src/main.cpp
     src/App.cpp
+    src/Animation.cpp
 )
 
 target_link_directories(Main PRIVATE src)
