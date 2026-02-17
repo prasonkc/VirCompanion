@@ -30,7 +30,7 @@ class App{
         int windowHeight = 400;
         int windowWidth = 400;
 
-        Animation idleAnim{32, 32, 4, 1900};
+        Animation idleAnim{32, 32, 4, 200};
 
 };
 
