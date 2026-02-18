@@ -2,8 +2,10 @@
 #define APP_H
 
 #include <SDL2/SDL.h>
-#include "Animation.h"
+#include <memory>
+#include <unordered_map>
 
+#include "Animation.h"
 
 class App{
     public:
@@ -30,7 +32,11 @@ class App{
         int windowHeight = 400;
         int windowWidth = 400;
 
-        Animation idleAnim{32, 32, 4, 200};
+        Animation idleAnim{32, 32, 8, 200};
+        enum AnimationState{Idle, Headpat, Happy, Sad, Carry};
+
+        std::unordered_map<AnimationState, Animation> animationMap;
+        AnimationState currentState = AnimationState::Idle;
 
 };
 
