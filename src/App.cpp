@@ -28,6 +28,13 @@ bool App::init() {
         std::cout << "" << "Failed to initialize renderer" << SDL_GetError() << std::endl;
         return false;
     }
+
+    // Initialize each animation
+        animationMap.emplace(AnimationState::Idle, Animation(32, 32, 8, 150));
+        animationMap.emplace(AnimationState::Happy, Animation(32, 32, 8, 150));
+        animationMap.emplace(AnimationState::Headpat, Animation(32, 32, 8, 150));
+        animationMap.emplace(AnimationState::Sad, Animation(32, 32, 8, 150));
+
     return true;
 }
 
@@ -69,7 +76,7 @@ void App::render(){
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    SDL_Rect src = idleAnim.getSourceRect();
+    SDL_Rect src = animationMap[currentState].getSourceRect();
     SDL_RenderCopy(renderer, texture, &src, nullptr);
     
     SDL_RenderPresent(renderer);
@@ -80,8 +87,7 @@ void App::run(){
         handleEvents();
         render();
         SDL_Delay(10);
-        idleAnim.update();
-    }
+        animationMap[currentState].update();    }
 }
 
 void App::handleEvents() {

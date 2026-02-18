@@ -6,6 +6,7 @@
 
 class Animation {
 public:
+    Animation() = default;
     Animation(int frameWidth, int frameHeight, int totalFrames, uint32_t frameDelay);
 
     void update();

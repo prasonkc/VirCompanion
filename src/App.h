@@ -32,12 +32,13 @@ class App{
         int windowHeight = 400;
         int windowWidth = 400;
 
-        Animation idleAnim{32, 32, 8, 200};
-        enum AnimationState{Idle, Headpat, Happy, Sad, Carry};
+        // Define animation states for each animations
+        enum class AnimationState{Idle, Headpat, Happy, Sad, Drag, count};
 
+        // Map every animation to its state and set the default to idle animation
         std::unordered_map<AnimationState, Animation> animationMap;
-        AnimationState currentState = AnimationState::Idle;
 
+        AnimationState currentState = AnimationState::Idle;
 };
 
 
