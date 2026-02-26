@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <memory>
+#include <string>
 #include <unordered_map>
 
 #include "Animation.h"
@@ -11,17 +12,16 @@ class App{
     public:
         bool init();
         void shutdown();
-        bool loadBMP(const char* filePath);
+        SDL_Texture* loadBMPTexture(const char* filePath);
         void run();
 
     private:
         void handleEvents();
         void render();
 
-        // Pointers to window, texture and renderer
+        // Pointers to window and renderer
         SDL_Window* window;
         SDL_Renderer* renderer;
-        SDL_Texture* texture;
 
         // Toogle window borders
         bool borderless = true;
@@ -37,6 +37,8 @@ class App{
 
         // Map every animation to its state and set the default to idle animation
         std::unordered_map<AnimationState, Animation> animationMap;
+        std::unordered_map<AnimationState, SDL_Texture*> animationTextures;
+        std::unordered_map<AnimationState, std::string> animationPaths;
 
         // Store the current animation state
         Animation* currentAnim = nullptr;

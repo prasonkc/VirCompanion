@@ -30,10 +30,23 @@ bool App::init() {
     }
 
     // Initialize each animation
-        animationMap.emplace(AnimationState::Idle, Animation(32, 32, 8, 150));
-        animationMap.emplace(AnimationState::Happy, Animation(32, 32, 8, 150));
-        animationMap.emplace(AnimationState::Headpat, Animation(32, 32, 8, 150));
-        animationMap.emplace(AnimationState::Sad, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Idle, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Happy, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Headpat, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Sad, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Drag, Animation(32, 32, 8, 150));
+
+    //  dummy asset paths
+    animationPaths[AnimationState::Idle] = "assets/idle.bmp";
+    animationPaths[AnimationState::Happy] = "assets/happy.bmp";
+    animationPaths[AnimationState::Headpat] = "assets/headpat.bmp";
+    animationPaths[AnimationState::Sad] = "assets/sad.bmp";
+    animationPaths[AnimationState::Drag] = "assets/drag.bmp";
+
+    for (const auto& entry : animationPaths) {
+        SDL_Texture* tex = loadBMPTexture(entry.second.c_str());
+        animationTextures[entry.first] = tex;
+    }
 
     return true;
 }
@@ -42,34 +55,38 @@ void App::shutdown(){
     // Destroy the window
     SDL_DestroyWindow( window );
 
-    SDL_DestroyTexture(texture);
+    for (auto& entry : animationTextures) {
+        if (entry.second) {
+            SDL_DestroyTexture(entry.second);
+        }
+    }
     SDL_DestroyRenderer(renderer);
 
     // Clear the memory and quit program
-    texture = NULL;
     renderer = NULL;
     window = NULL;
+    animationTextures.clear();
 
     SDL_Quit();
 }
 
-bool App::loadBMP(const char* filePath){
+SDL_Texture* App::loadBMPTexture(const char* filePath){
     // Load the image to temporary variable
     SDL_Surface *temp;
     temp = SDL_LoadBMP(filePath);
 
     if(!temp){
-        std::cout<<"Failed to Load image" << SDL_GetError() << std::endl;
-        return false;
+        std::cout<<"Failed to Load image " << filePath << ": " << SDL_GetError() << std::endl;
+        return nullptr;
     }
 
     // Create a texture from the temporary variable
-    texture = SDL_CreateTextureFromSurface( renderer, temp );
+    SDL_Texture* created = SDL_CreateTextureFromSurface( renderer, temp );
 
     // Cleanup and return
     SDL_FreeSurface(temp);
     temp = NULL;
-    return true;
+    return created;
 }
 
 void App::render(){
@@ -77,7 +94,10 @@ void App::render(){
     SDL_RenderClear(renderer);
 
     SDL_Rect src = animationMap[currentState].getSourceRect();
-    SDL_RenderCopy(renderer, texture, &src, nullptr);
+    SDL_Texture* tex = animationTextures[currentState];
+    if (tex) {
+        SDL_RenderCopy(renderer, tex, &src, nullptr);
+    }
     
     SDL_RenderPresent(renderer);
 }
