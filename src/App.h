@@ -33,12 +33,24 @@ class App{
         int windowWidth = 400;
 
         // Define animation states for each animations
-        enum class AnimationState{Idle, Headpat, Happy, Sad, Drag, count};
+        enum class AnimationState{Idle, Headpat, Happy, Sad, Drag};
 
         // Map every animation to its state and set the default to idle animation
         std::unordered_map<AnimationState, Animation> animationMap;
 
+        // Store the current animation state
+        Animation* currentAnim = nullptr;
         AnimationState currentState = AnimationState::Idle;
+
+        // Animation state initialization
+        Animation idleAnim;
+        Animation headpatAnim;
+        Animation happyAnim;
+        Animation sadAnim;
+        Animation dragAnim;
+
+        void setAnimationState(AnimationState state);
+
 };
 
 

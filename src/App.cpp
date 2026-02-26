@@ -105,3 +105,7 @@ void App::handleEvents() {
         }
     }
 }
+
+void App::setAnimationState(AnimationState state){
+    return;
+}

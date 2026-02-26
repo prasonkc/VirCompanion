@@ -7,9 +7,10 @@
 class Animation {
 public:
     Animation() = default;
-    Animation(int frameWidth, int frameHeight, int totalFrames, uint32_t frameDelay);
+    Animation(int frameWidth, int frameHeight, int totalFrames, uint32_t frameDelay, bool loop = true);
 
     void update();
+    void reset();
     SDL_Rect getSourceRect() const;
 
 private:
@@ -21,6 +22,9 @@ private:
 
     uint32_t frameDelay;
     uint32_t lastFrameTime = 0;
+
+    bool loop;
+    bool finished = false;
 };
 
 #endif

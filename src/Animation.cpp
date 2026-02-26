@@ -1,12 +1,13 @@
 #include "Animation.h"
 
 // Animation construictor
-Animation::Animation(int fw, int fh, int tf, uint32_t delay)
+Animation::Animation(int fw, int fh, int tf, uint32_t delay, bool loopAni)
 {
     frameWidth = fw;
     frameHeight = fh;
     totalFrames = tf;
     frameDelay = delay;
+    loop = loopAni;
 }
 
 // Update thhe animation each tick
@@ -30,4 +31,11 @@ SDL_Rect Animation::getSourceRect() const {
     rect.w = frameWidth;
     rect.h = frameHeight;
     return rect;
+}
+
+// Reset the animation
+void Animation::reset() {
+    currentFrame = 0;
+    finished = false;
+    lastFrameTime = SDL_GetTicks();
 }
