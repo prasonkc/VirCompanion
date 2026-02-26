@@ -107,5 +107,28 @@ void App::handleEvents() {
 }
 
 void App::setAnimationState(AnimationState state){
-    return;
+    if (state == currentState)
+        return;
+
+    currentState = state;
+
+    switch (currentState) {
+        case AnimationState::Idle:
+            currentAnim = &idleAnim;
+            break;
+        case AnimationState::Headpat:
+            currentAnim = &headpatAnim;
+            break;
+        case AnimationState::Happy:
+            currentAnim = &happyAnim;
+            break;
+        case AnimationState::Sad:
+            currentAnim = &sadAnim;
+            break;
+        case AnimationState::Drag:
+            currentAnim = &dragAnim;
+            break;
+    }
+
+    currentAnim->reset();
 }
