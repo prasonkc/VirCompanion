@@ -36,17 +36,19 @@ bool App::init() {
     animationMap.emplace(AnimationState::Sad, Animation(32, 32, 8, 150));
     animationMap.emplace(AnimationState::Drag, Animation(32, 32, 8, 150));
 
-    //  dummy asset paths
+    // Asset paths
     animationPaths[AnimationState::Idle] = "assets/idle.bmp";
     animationPaths[AnimationState::Happy] = "assets/happy.bmp";
     animationPaths[AnimationState::Headpat] = "assets/headpat.bmp";
     animationPaths[AnimationState::Sad] = "assets/sad.bmp";
     animationPaths[AnimationState::Drag] = "assets/drag.bmp";
 
+    // Load the texture from each path
     for (const auto& entry : animationPaths) {
         SDL_Texture* tex = loadBMPTexture(entry.second.c_str());
         animationTextures[entry.first] = tex;
     }
+    animationMap[currentState].reset();
 
     return true;
 }
@@ -98,7 +100,7 @@ void App::render(){
     if (tex) {
         SDL_RenderCopy(renderer, tex, &src, nullptr);
     }
-    
+
     SDL_RenderPresent(renderer);
 }
 
@@ -114,8 +116,43 @@ void App::handleEvents() {
     SDL_Event e;
 
     while (SDL_PollEvent(&e)) {
-        if (e.type == SDL_QUIT)
+        if (e.type == SDL_QUIT) {
             running = false;
+            continue;
+        }
+
+        if (e.type == SDL_KEYDOWN) {
+            switch (e.key.keysym.sym) {
+                case SDLK_ESCAPE:
+                    running = false;
+                    break;
+                case SDLK_1:
+                    setAnimationState(AnimationState::Idle);
+                    break;
+                case SDLK_2:
+                    setAnimationState(AnimationState::Happy);
+                    break;
+                case SDLK_3:
+                    setAnimationState(AnimationState::Headpat);
+                    break;
+                case SDLK_4:
+                    setAnimationState(AnimationState::Sad);
+                    break;
+                case SDLK_5:
+                    setAnimationState(AnimationState::Drag);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        if (e.type == SDL_WINDOWEVENT) {
+            if (e.window.event == SDL_WINDOWEVENT_ENTER) {
+                setAnimationState(AnimationState::Happy);
+            } else if (e.window.event == SDL_WINDOWEVENT_LEAVE) {
+                setAnimationState(AnimationState::Sad);
+            }
+        }
 
         if (e.type == SDL_MOUSEBUTTONDOWN &&
             e.button.button == SDL_BUTTON_RIGHT) {
@@ -123,6 +160,22 @@ void App::handleEvents() {
             borderless = !borderless;
             SDL_SetWindowBordered(window, borderless ? SDL_FALSE : SDL_TRUE);
         }
+
+        if (e.type == SDL_MOUSEBUTTONDOWN &&
+            e.button.button == SDL_BUTTON_LEFT) {
+            setAnimationState(AnimationState::Headpat);
+        }
+
+        if (e.type == SDL_MOUSEMOTION &&
+            (e.motion.state & SDL_BUTTON_LMASK)) {
+            setAnimationState(AnimationState::Drag);
+        }
+
+        if (e.type == SDL_MOUSEBUTTONUP &&
+            e.button.button == SDL_BUTTON_LEFT) {
+            setAnimationState(AnimationState::Idle);
+        }
+
     }
 }
 
@@ -131,24 +184,5 @@ void App::setAnimationState(AnimationState state){
         return;
 
     currentState = state;
-
-    switch (currentState) {
-        case AnimationState::Idle:
-            currentAnim = &idleAnim;
-            break;
-        case AnimationState::Headpat:
-            currentAnim = &headpatAnim;
-            break;
-        case AnimationState::Happy:
-            currentAnim = &happyAnim;
-            break;
-        case AnimationState::Sad:
-            currentAnim = &sadAnim;
-            break;
-        case AnimationState::Drag:
-            currentAnim = &dragAnim;
-            break;
-    }
-
-    currentAnim->reset();
+    animationMap[currentState].reset();
 }

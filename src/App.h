@@ -41,15 +41,7 @@ class App{
         std::unordered_map<AnimationState, std::string> animationPaths;
 
         // Store the current animation state
-        Animation* currentAnim = nullptr;
         AnimationState currentState = AnimationState::Idle;
-
-        // Animation state initialization
-        Animation idleAnim;
-        Animation headpatAnim;
-        Animation happyAnim;
-        Animation sadAnim;
-        Animation dragAnim;
 
         void setAnimationState(AnimationState state);
 
