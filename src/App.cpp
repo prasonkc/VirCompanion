@@ -31,7 +31,7 @@ bool App::init() {
 
     // Initialize each animation
     animationMap.emplace(AnimationState::Idle, Animation(32, 32, 8, 150));
-    animationMap.emplace(AnimationState::Happy, Animation(32, 32, 8, 150));
+    animationMap.emplace(AnimationState::Happy, Animation(32, 32, 8, 150, false));
     animationMap.emplace(AnimationState::Headpat, Animation(32, 32, 8, 150));
     animationMap.emplace(AnimationState::Sad, Animation(32, 32, 8, 150));
     animationMap.emplace(AnimationState::Drag, Animation(32, 32, 8, 150));
@@ -109,7 +109,13 @@ void App::run(){
         handleEvents();
         render();
         SDL_Delay(10);
-        animationMap[currentState].update();    }
+        animationMap[currentState].update();
+
+        if (currentState == AnimationState::Happy &&
+            animationMap[currentState].isFinished()) {
+            setAnimationState(AnimationState::Idle);
+        }
+    }
 }
 
 void App::handleEvents() {

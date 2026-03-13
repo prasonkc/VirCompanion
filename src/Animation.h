@@ -12,6 +12,7 @@ public:
     void update();
     void reset();
     SDL_Rect getSourceRect() const;
+    bool isFinished() const;
 
 private:
     int frameWidth;

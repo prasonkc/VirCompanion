@@ -12,13 +12,26 @@ Animation::Animation(int fw, int fh, int tf, uint32_t delay, bool loopAni)
 
 // Update thhe animation each tick
 void Animation::update() {
+    if (finished) {
+        return;
+    }
     // Get the number of milliseconds since the library was initialized
     uint32_t now = SDL_GetTicks();
 
     // If time elapsed is greater than the lastFrameTime + frameDelay
     if (now > lastFrameTime + frameDelay) {
         // Update the current frame to next frame in the animation
-        currentFrame = (currentFrame + 1) % totalFrames;
+        int nextFrame = currentFrame + 1;
+        if (nextFrame >= totalFrames) {
+            if (loop) {
+                currentFrame = 0;
+            } else {
+                currentFrame = totalFrames - 1;
+                finished = true;
+            }
+        } else {
+            currentFrame = nextFrame;
+        }
         lastFrameTime = now;
     }
 }
@@ -38,4 +51,8 @@ void Animation::reset() {
     currentFrame = 0;
     finished = false;
     lastFrameTime = SDL_GetTicks();
+}
+
+bool Animation::isFinished() const {
+    return finished;
 }
